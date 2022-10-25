@@ -1,0 +1,5 @@
+venv
+__pycache__
+.idea
+files/Draft.xlsx
+files/Import.csv
