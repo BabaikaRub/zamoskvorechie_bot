@@ -3,7 +3,6 @@ import psycopg2
 from config import host, user, password, db_name
 
 
-# Переделать функцию под коннект и асинхрон
 def connect_to_db():
     global connection
     try:
@@ -29,7 +28,7 @@ def disconnect_from_db():
 async def get_data(data):
     with connection.cursor() as cursor:
             cursor.execute(
-                f"""SELECT * FROM "Directions" WHERE payment = '{data['payment']}' AND direction = '{data['direction']}' AND vacancies != 'Нет' AND vacancies != 'нет';"""
+                f"""SELECT * FROM "Directions" WHERE age LIKE '{data['age']}%' AND payment = '{data['payment']}' AND direction = '{data['direction']}' AND vacancies != 'Нет' AND vacancies != 'нет';"""
             )
 
             return cursor.fetchall()
