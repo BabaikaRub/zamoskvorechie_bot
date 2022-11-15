@@ -17,18 +17,17 @@ class FSMClient(StatesGroup):
 
 
 async def command_start(message: types.Message):
-    await bot.send_message(message.from_user.id, 'Привет! Я бот, введи команду /sign_up', reply_markup=ReplyKeyboardRemove())
+    await bot.send_message(message.from_user.id, 'Привет!👋\n Я бот ЦДТ "Замоскворечье", введи команду /sign_up', reply_markup=ReplyKeyboardRemove())
 
 
 async def command_sign(message: types.Message):
-    await bot.send_message(message.from_user.id, 'Есть две категории занятий, выбери одну ниже', reply_markup=inline_selector)
+    await bot.send_message(message.from_user.id, '🎓Есть две категории занятий, выбери одну ниже:', reply_markup=inline_selector)
 
 
 @dp.callback_query_handler(text='button_free', state=None)
 async def free_list(callback: types.CallbackQuery):
-    await bot.send_message(callback.from_user.id, 'Выберите форму обучения', reply_markup=pay_buttons)
+    await bot.send_message(callback.from_user.id, 'Выберите форму обучения:', reply_markup=pay_buttons)
 
-    # Вот здесь добавить какой-то дополнительный триггер
     await FSMClient.payment.set()
     await callback.answer()
 
@@ -42,7 +41,7 @@ async def command_cancel(message: types.Message, state: FSMContext):
 
     await state.finish()
 
-    await bot.send_message(message.from_user.id, 'Действие отменено', reply_markup=types.ReplyKeyboardRemove())
+    await bot.send_message(message.from_user.id, '❌Действие отменено', reply_markup=types.ReplyKeyboardRemove())
 
 
 @dp.message_handler(Text(equals='Платно'), state=FSMClient.payment)
@@ -151,7 +150,7 @@ async def get_back(callback: types.CallbackQuery):
 
 @dp.callback_query_handler(text='button_busy')
 async def busy_list(callback: types.CallbackQuery):
-    await bot.send_message(callback.from_user.id, 'В данных момент запись на данные кружки не ведется\nВы можете записаться в список ожидания, чтобы попасть на выбраное вами направление в дальнейшем', reply_markup=inline_menu_wait_list)
+    await bot.send_message(callback.from_user.id, 'В данных момент запись на данные кружки *не ведется*\n\nВы можете записаться в список ожидания, чтобы попасть на выбраное вами направление в дальнейшем\n\nВ файле "Busy.xlsx" представлен список возможных направлений👇', parse_mode="Markdown", reply_markup=inline_menu_wait_list)
 
     file = open('files/Busy.xlsx', 'rb')
     await bot.send_document(callback.from_user.id, file)

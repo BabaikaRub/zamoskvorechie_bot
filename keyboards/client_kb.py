@@ -1,8 +1,8 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
 
 
-inline_button_free = InlineKeyboardButton('Идет прием', callback_data='button_free')
-inline_button_busy = InlineKeyboardButton('Приема нет', callback_data='button_busy')
+inline_button_free = InlineKeyboardButton('🟢Идет прием', callback_data='button_free')
+inline_button_busy = InlineKeyboardButton('🔴Приема нет', callback_data='button_busy')
 
 button_budget = KeyboardButton('Платно')
 button_pay = KeyboardButton('Бесплатно')
@@ -21,7 +21,7 @@ inline_back = InlineKeyboardButton('Назад', callback_data='button_back')
 inline_enroll = InlineKeyboardButton('Записаться', url='https://www.mos.ru/pgu/ru/app/dogm/077060701/#step_1')
 inline_desc = InlineKeyboardButton('Описание', callback_data='desc')
 
-button_wait_list = InlineKeyboardButton('Лист ожидания', url='https://forms.yandex.ru/u/6355a585068ff0a7fee72b40/')
+button_wait_list = InlineKeyboardButton('📝Лист ожидания', url='https://forms.yandex.ru/u/6355a585068ff0a7fee72b40/')
 
 inline_menu_wait_list = InlineKeyboardMarkup(row_width=1)
 inline_menu_wait_list.add(button_wait_list)

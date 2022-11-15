@@ -1,4 +1,4 @@
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 
 button_1 = KeyboardButton('От 1 года')
@@ -24,4 +24,4 @@ paint_dirc_free = ReplyKeyboardMarkup(row_width=1).add(button_7).add(button_8).a
 tech_dirc_pay = ReplyKeyboardMarkup(row_width=1).add(button_8).add(button_10).add(button_11)
 social_dirc_pay = ReplyKeyboardMarkup(row_width=1).add(button_1).add(button_3).add(button_12)
 phys_dirc_pay = ReplyKeyboardMarkup(row_width=1).row(button_4, button_6).row(button_8, button_9).row(button_11, button_18)
-paint_dirc_pay = ReplyKeyboardMarkup(row_width=1).row(button_3, button_4).row(button_5, button_6).row(button_7, button_8).row(button_12, button_14, button_20)
+paint_dirc_pay = ReplyKeyboardMarkup(row_width=1).row(button_3, button_4).row(button_5, button_6).row(button_7, button_8).row(button_12, button_14).add(button_20)
